@@ -1,0 +1,11 @@
+# OPA build artifacts
+dist/
+*.tar.gz
+
+# IDEs
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
