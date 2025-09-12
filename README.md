@@ -1,23 +1,43 @@
-# HTTP Collector Policies for use in Compliance Framework HTTP Collector Plugin
+# HTTP Collector Policies for Compliance Framework HTTP Collector Plugin
+
+OPA/Rego policies that validate HTTP response data collected by the [HTTP Collector Plugin](https://github.com/compliance-framework/plugin-http-collector).
+
+## Available Policies
+
+- **Success Status**: Ensures HTTP responses return 2xx status codes
+- **Response Time**: Validates response times are under 5000ms  
+- **JSON Content**: Requires responses have `application/json` content type
 
 ## Requirements
 
 Install [opa](https://www.openpolicyagent.org/docs/latest/#running-opa) for testing & building the bundles.
 
-## Testing
+## Commands
 
+**Test policies:**
 ```shell
 make test
 ```
 
-## Bundling
+**Validate syntax:**
+```shell
+make validate  
+```
 
-Policies are built into bundle to make distribution easier. 
-
-You can easily build the policies by running 
+**Build bundle:**
 ```shell
 make build
 ```
+
+## How it Works
+
+The HTTP Collector Plugin sends HTTP response data to these policies for validation. Each policy checks different aspects:
+
+- Response status codes (success/failure)
+- Response timing (performance)  
+- Content types (API compliance)
+
+Violations are reported to the compliance framework when checks fail.
 
 ## Running policies locally
 
