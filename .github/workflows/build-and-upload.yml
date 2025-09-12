@@ -9,11 +9,10 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
-      - uses: actions/setup-go@v5
       - name: Setup OPA
         uses: open-policy-agent/setup-opa@v2
         with:
-          version: latest
+          version: 1.6.0
       - name: Run OPA Build
         run: |
           mkdir -p dist/
@@ -22,6 +21,7 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           files: dist/bundle.tar.gz
+      - uses: actions/setup-go@v5
       - name: Install gooci cli
         run: go install github.com/compliance-framework/gooci@latest
       - name: Authenticate gooci cli
