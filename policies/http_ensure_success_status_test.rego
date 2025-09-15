@@ -2,7 +2,7 @@ package compliance_framework.http_collector.ensure_success_status
 
 import data.compliance_framework.http_collector.ensure_success_status as policy
 
-test_success_status_200_ok {
+test_success_status_200_ok if {
     inp := {
         "status_code": 200,
         "success": true,
@@ -12,7 +12,7 @@ test_success_status_200_ok {
     v == 0
 }
 
-test_success_status_201_created_ok {
+test_success_status_201_created_ok if {
     inp := {
         "status_code": 201,
         "success": true,
@@ -22,7 +22,7 @@ test_success_status_201_created_ok {
     v == 0
 }
 
-test_success_status_fails_for_500_error {
+test_success_status_fails_for_500_error if {
     inp := {
         "status_code": 500,
         "success": false,
@@ -33,7 +33,7 @@ test_success_status_fails_for_500_error {
     v == 1
 }
 
-test_success_status_fails_for_404_client_error {
+test_success_status_fails_for_404_client_error if {
     inp := {
         "status_code": 404,
         "success": false,
@@ -44,7 +44,7 @@ test_success_status_fails_for_404_client_error {
     v == 1
 }
 
-test_success_status_fails_for_missing_success_field {
+test_success_status_fails_for_missing_success_field if {
     inp := {
         "status_code": 200,
         "response_time_ms": 150
@@ -53,7 +53,7 @@ test_success_status_fails_for_missing_success_field {
     v == 1
 }
 
-test_success_status_fails_for_success_false_despite_200 {
+test_success_status_fails_for_success_false_despite_200 if {
     inp := {
         "status_code": 200,
         "success": false,

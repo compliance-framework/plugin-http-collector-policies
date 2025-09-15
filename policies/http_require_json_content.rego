@@ -2,11 +2,11 @@ package compliance_framework.http_collector.require_json_content
 
 import future.keywords.in
 
-violation[{}] {
+violation contains {} if {
 	not input.headers["Content-Type"]
 }
 
-violation[{}] {
+violation contains {} if {
 	input.headers["Content-Type"]
 	count([ct | ct := input.headers["Content-Type"][_]; contains(ct, "application/json")]) == 0
 }

@@ -1,6 +1,6 @@
 package compliance_framework.http_collector.response_time_check
 
-violation[{}] {
+violation contains {} if {
 	input.response_time_ms > 5000
 }
 

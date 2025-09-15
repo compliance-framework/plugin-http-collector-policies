@@ -1,6 +1,6 @@
 package compliance_framework.http_collector.ensure_success_status
 
-violation[{}] {
+violation contains {} if {
 	not input.success
 }
 
