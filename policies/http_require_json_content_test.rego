@@ -2,7 +2,7 @@ package compliance_framework.http_collector.require_json_content
 
 import data.compliance_framework.http_collector.require_json_content as policy
 
-test_json_content_type_plain_ok {
+test_json_content_type_plain_ok if {
     inp := {
         "headers": {
             "Content-Type": ["application/json"],
@@ -15,7 +15,7 @@ test_json_content_type_plain_ok {
     v == 0
 }
 
-test_json_content_type_with_charset_ok {
+test_json_content_type_with_charset_ok if {
     inp := {
         "headers": {
             "Content-Type": ["application/json; charset=utf-8"],
@@ -28,7 +28,7 @@ test_json_content_type_with_charset_ok {
     v == 0
 }
 
-test_json_content_type_with_boundary_ok {
+test_json_content_type_with_boundary_ok if {
     inp := {
         "headers": {
             "Content-Type": ["application/json; boundary=something"]
@@ -40,7 +40,7 @@ test_json_content_type_with_boundary_ok {
     v == 0
 }
 
-test_json_content_fails_with_html_violation {
+test_json_content_fails_with_html_violation if {
     inp := {
         "headers": {
             "Content-Type": ["text/html"],
@@ -53,7 +53,7 @@ test_json_content_fails_with_html_violation {
     v == 1
 }
 
-test_json_content_fails_with_plain_text_violation {
+test_json_content_fails_with_plain_text_violation if {
     inp := {
         "headers": {
             "Content-Type": ["text/plain"],
@@ -66,7 +66,7 @@ test_json_content_fails_with_plain_text_violation {
     v == 1
 }
 
-test_json_content_fails_missing_content_type_header_violation {
+test_json_content_fails_missing_content_type_header_violation if {
     inp := {
         "headers": {
             "Server": ["nginx"],
@@ -79,7 +79,7 @@ test_json_content_fails_missing_content_type_header_violation {
     v == 1
 }
 
-test_json_content_fails_empty_headers_violation {
+test_json_content_fails_empty_headers_violation if {
     inp := {
         "headers": {},
         "status_code": 200,
