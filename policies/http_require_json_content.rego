@@ -7,8 +7,8 @@ violation[{}] if {
 }
 
 violation[{}] if {
-	input.headers["Content-Type"]
-	count([ct | ct := input.headers["Content-Type"][_]; contains(ct, "application/json")]) == 0
+	content_type_values := input.headers["Content-Type"]
+	count([ct | ct := content_type_values[_]; contains(ct, "application/json")]) == 0
 }
 
 title := "HTTP endpoint does not return JSON content type"
