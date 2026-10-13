@@ -1,2 +1,5 @@
 lisa-design:
 The policies were Rego v0 (`violation[{}] {`), which OPA 1.x cannot parse by default (old CI on main failed; v0.1.0 release run failed). Converted with `opa fmt --v0-v1` (OPA 1.14.1): v0 `p[x] { }` is a partial set, so `violation contains {} if` is the faithful v1 form (not a partial object). `import rego.v1` kept as emitted by opa fmt (no-op in v1, keeps v0 parsers working). Behaviour proven identical: main evaluated with --v0-compatible vs branch in v1 on 61 inputs (19 from tests + 42 hand-made), non-test keys equal, all 19 test_* true on both. Fix errors only: 1 Regal warning (equals-over-count) left alone.
+
+lisa-selfreview:
+Self-review pass 1: no findings. Diff is opa fmt --v0-v1 output + removal of own-package imports in 3 test files (policy.violation -> violation). No assertion changed; 19/19 tests pass; fmt/check --strict/build/regal (0 errors)/actionlint clean.
