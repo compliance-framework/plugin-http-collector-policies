@@ -1,0 +1,2 @@
+lisa-design:
+Seed .release-please-manifest.json at 0.2.0: releases/latest is v0.2.0 (final, hand-released 2026-10-13 with the old workflow), tag commit 86cfd57 == main HEAD, so no bootstrap-sha. Callers copied verbatim from the merged reference plugin-file-attestation-policies#4 (mock-plugin-policies-1 with pins at v1.5.2). ci.yml was already at v1.5.2 with release-checks: unchanged. README has no release section: unchanged.
